@@ -8,7 +8,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @Date: 2022/10/9 10:32
  * @Desc:
  */
-object WordCound {
+object WordCount {
   def main(args: Array[String]): Unit = {
 
 /*    //1.创建SparkConf并设置App名称，设置本地模式运行
