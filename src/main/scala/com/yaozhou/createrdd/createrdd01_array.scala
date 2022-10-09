@@ -7,6 +7,6 @@ package com.yaozhou.createrdd
  */
 object createrdd01_array {
   def main(args: Array[String]): Unit = {
-    
+
   }
 }
