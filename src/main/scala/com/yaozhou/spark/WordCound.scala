@@ -9,7 +9,9 @@ import org.apache.spark.{SparkConf, SparkContext}
  */
 object WordCound {
   def main(args: Array[String]): Unit = {
+
     //1.创建SparkConf并设置App名称，设置本地模式运行
+
     val conf: SparkConf = new SparkConf().setAppName("WC").setMaster("local[*]")
 
     //2.创建SparkContext，该对象是提交Spark App的入口
