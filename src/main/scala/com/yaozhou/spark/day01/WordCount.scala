@@ -1,4 +1,4 @@
-package com.yaozhou.spark
+package com.yaozhou.spark.day01
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
@@ -11,7 +11,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object WordCount {
   def main(args: Array[String]): Unit = {
 
-/*    //1.创建SparkConf并设置App名称，设置本地模式运行
+    /*    //1.创建SparkConf并设置App名称，设置本地模式运行
 
     val conf: SparkConf = new SparkConf().setAppName("WC").setMaster("local[*]")
 
