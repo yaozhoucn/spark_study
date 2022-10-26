@@ -9,7 +9,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  * @Desc: 默认分区
  *
  *  -从集合中创建RDD 分区大小取决于分配给应用的CPU核数
- *  -读取外部文件创建RDD 分区大小取决于分配给应用的CPU核数与2取一个最小值
+ *  -读取外部文件创建RDD 分区大小取决于分配给应用的CPU核数与2取一个最小值 --math.min(取决于应用分配给应用的CPU核数，2)
  */
 object Spark03_Partition_Default {
   def main(args: Array[String]): Unit = {
