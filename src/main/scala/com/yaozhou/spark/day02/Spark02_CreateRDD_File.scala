@@ -21,7 +21,7 @@ object Spark02_CreateRDD_File {
 
 
     //从HDFS服务上读取数据创建RDD
-    val rdd2: RDD[String] = sc.textFile("hdfs://hadoop202:8020/inoput")
+    val rdd2: RDD[String] = sc.textFile("hdfs://hadoop202:8020/input")
     rdd.collect().foreach(println)
   }
 
