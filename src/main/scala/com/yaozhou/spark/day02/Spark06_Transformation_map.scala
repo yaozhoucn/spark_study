@@ -10,7 +10,7 @@ import org.apache.spark.rdd.RDD
  */
 object Spark06_Transformation_map {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Spark05_Partition_File").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("Spark06_Transformation_map").setMaster("local[*]")
 
     //创建sparkcontext对象
     val sc = new SparkContext(conf)

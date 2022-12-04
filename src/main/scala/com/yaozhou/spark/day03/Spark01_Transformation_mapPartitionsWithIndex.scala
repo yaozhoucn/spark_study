@@ -10,7 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  */
 object Spark01_Transformation_mapPartitionsWithIndex {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Spark07_Transformation_mapPartitions").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("Spark01_Transformation_mapPartitionsWithIndex").setMaster("local[*]")
 
     //创建sparkcontext对象
     val sc = new SparkContext(conf)
