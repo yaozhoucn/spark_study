@@ -21,21 +21,25 @@ object Spark01_Transformation_mapPartitionsWithIndex {
      * 一般适合用于批处理的操作，比如：将RDD的中的元素插入到数据库中，需要连接数据库；
      * 如果每一个元素都创建一个的连接，效率很低；可以对每个分区的元素创建一个连接；
      */
-    val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4),4)
+    val rdd: RDD[Int] = sc.makeRDD(List(1,2,3,4),2)
     println("原分区数："+rdd.partitions.size)
-    val newRdd: RDD[Int] = rdd.mapPartitions((datas) => {
-      datas.map(x =>
-        x * 2
-      )
-    })
+//    val newRdd: RDD[(Int,Int)] = rdd.mapPartitionsWithIndex((index,datas) => {
+//      datas.map((index,_))
+//    })
 
-    /**
-     * 简化写法
-     *
-     *
-     * rdd.mapPartitions(datas => datas.map(_*2))
-     *
-     */
+    //需求：第二个分区数据*2，其余分区数据保持不变；
+
+    val newRdd: RDD[Int] = rdd.mapPartitionsWithIndex((index,datas) => {
+//      index match {
+//        case 1 => datas.map(_*2)
+//        case _ => datas
+//      }
+      if (index == 1){
+        datas.map(_*2)
+      }else{
+        datas
+      }
+    })
     println("=====================================================")
     println("新分区数："+newRdd.partitions.size)
     newRdd.collect().foreach(println)
