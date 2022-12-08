@@ -19,14 +19,25 @@ object Spark04_Transformation_groupBy {
     /**
      * 按照Rdd指定的规则对数据进行分组
      */
-    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6,7,8,9), 3)
-    val newRDD: RDD[(Int, Iterable[Int])] = rdd.groupBy(datas => datas % 2)
 
-    newRDD.mapPartitionsWithIndex((index,datas)=>{
-      datas.map((index,_))
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5, 6,7,8,9), 3)
+    print("----------gourupBy分组之前-------------")
+    rdd.mapPartitionsWithIndex((index,datas2) => {
+      println(index+"--------->" + datas2.mkString(","))
+      datas2
     }).collect().foreach(println)
 
 
+    val newRDD: RDD[(Int, Iterable[Int])] = rdd.groupBy(datas => datas % 2)
+    print("----------gourupBy分组之后-------------")
+    newRDD.mapPartitionsWithIndex((index,datas)=>{
+      println(index+"--------->" + datas.mkString(","))
+      datas.map((index,_))
+    }).collect().foreach(println)
+
+    val rdd2: RDD[String] = sc.makeRDD(List("atguigu", "scala", "spark", "atguigu", "scala", "spark"))
+    rdd2.groupBy(elem => elem).collect().foreach(println)
+    //Thread.sleep(30000)
     sc.stop()
   }
 
