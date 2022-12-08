@@ -26,7 +26,7 @@ object Spark05_Transformation_groupBy_WordCount {
     //1.对Rdd中的数据进行扁平映射
     val wordRdd: RDD[String] = rdd.flatMap(datas => datas.split(" "))
 
-    //2.将映射后的数据进行结构转换，为每个单词进行计数
+ /*   //2.将映射后的数据进行结构转换，为每个单词进行计数
     val wordToOneRdd: RDD[(String, Int)] = wordRdd.map(elem => (elem, 1))
 
     //3.按照Key对Rdd中的元素进行分组
@@ -34,12 +34,21 @@ object Spark05_Transformation_groupBy_WordCount {
 
     //将groupBY获得的数据进行格式转化，将分组后的数据再进行映射
     //val wordCount: RDD[(String, Int)] = groupByRdd.map(elem => (elem._1, elem._2.size))
-    val wordCount: RDD[(String, Int)] = groupByRdd.map {
+    val c: RDD[(String, Int)] = groupByRdd.map {
       case (word, data) => {
         (word, data.size)
       }
-    }
-    wordCount.collect().foreach(println)
+    }*/
+
+    //简单版-实现方式2
+    val groupByRdd2: RDD[(String, Iterable[String])] = wordRdd.groupBy(elem => elem)
+
+    val wordCount2: RDD[(String, Int)] = groupByRdd2.map(datas => {
+      (datas._1, datas._2.size)
+    })
+    wordCount2.collect().foreach(println)
+
+
     sc.stop()
   }
 
