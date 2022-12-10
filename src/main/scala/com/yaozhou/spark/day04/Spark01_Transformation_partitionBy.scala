@@ -48,7 +48,7 @@ object Spark01_Transformation_partitionBy {
 
     sc.stop()
   }
-  //更具业务规则自己创建分区
+  //根据业务规则自己创建分区
 
 }
 //自定义分区器

@@ -19,7 +19,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  */
 object Spark13_Transformation_doubleValue {
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Spark12_Transformation_pipe").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("Spark13_Transformation_doubleValue").setMaster("local[*]")
 
     //创建sparkcontext对象
     val sc = new SparkContext(conf)
