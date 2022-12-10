@@ -11,7 +11,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  *
  *    coalesce -- 默认不执行shuffle，一般用于缩减分区
  *
- *    repartition  --
+ *    repartition  -- 底层调用的就是coalesce，只不过默认是执行shuffle的，一般用于扩大分区
  *
  */
 object Spark10_Transformation_coalesce {
@@ -32,6 +32,8 @@ object Spark10_Transformation_coalesce {
     //缩减分区
 
     println("===============缩减分区之后====================")
+
+    //注意:默认情况下，如果使用coalesce扩大分区是不起作用的，因为没有进行shuffle
     rdd.coalesce(3).mapPartitionsWithIndex(
       (index,datas) => {
         println(index+"------>"+datas.mkString(","))
