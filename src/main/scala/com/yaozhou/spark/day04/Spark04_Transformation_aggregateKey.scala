@@ -51,7 +51,7 @@ object Spark04_Transformation_aggregateKey{
     )
 
     //简化
-
+    //每次比对会使用初始值0与每个（key,value）value进行比对，获取最大值，然后最后将各个分区中的最大值相加
     println("=====================使用aggregateByKey======================")
     rdd.aggregateByKey(0)(
       math.max(_, _),
