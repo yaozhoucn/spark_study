@@ -14,7 +14,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  *  (3) combOp (分区间) :函数用于合并每个分区中的结果。
  *
  */
-object Spark04_Transformation_aggregateKey{
+object Spark04_Transformation_aggregateByKey{
   def main(args: Array[String]): Unit = {
     val conf = new SparkConf().setAppName("Spark04_Transformation_aggregateKey").setMaster("local[*]")
 
