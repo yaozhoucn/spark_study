@@ -13,7 +13,7 @@ import org.apache.spark.{SparkConf, SparkContext}
  */
 object Spark07_Transformation_sortByKey{
   def main(args: Array[String]): Unit = {
-    val conf = new SparkConf().setAppName("Spark06_Transformation_combineKey").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("Spark07_Transformation_sortByKey").setMaster("local[*]")
 
     //创建sparkcontext对象
     val sc = new SparkContext(conf)
